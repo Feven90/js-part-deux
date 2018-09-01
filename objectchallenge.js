@@ -1,3 +1,5 @@
+
+
 let elizabethSanger = {
     congressionalDistrict: 5,
     statements: [
@@ -44,3 +46,93 @@ let elizabethSanger = {
     missionStatement: "Do good stuff",
     voterRegistrationUrl: 'www.google.com'
   };
+
+  const printToDom = (stringToPrint, divId) => {
+  const selectedDiv = document.getElementById(divId);
+  selectedDiv.innerHTML += `<h6>${stringToPrint}</h6>`;
+};
+
+function missionStatement () {
+const mission = elizabethSanger.missionStatement;
+printToDom(mission,'missionStatement');
+}
+
+function statements () {
+  let state = '';
+  for (let i = 0; i < elizabethSanger.statements.length; i++){
+    state += elizabethSanger.statements[i].statement;
+  }
+  printToDom(state, 'state');
+}
+
+const donationFormUrl = () => {
+  const donation = `<a href="http://${elizabethSanger.donationFormUrl}">Donation address</a>`;
+  printToDom(donation,"donation");
+
+}
+//events
+const eventBuilder = () => {
+let newString = '';
+for (let i = 0; i < elizabethSanger.events.length; i++) {
+  newString += `<div class="event">`;
+  newString += `<h4>Title: ${elizabethSanger.events[i].title} ${','}` ;
+  newString += `Date: ${elizabethSanger.events[i].date} ${','}` ;
+  newString += `Description: ${ elizabethSanger.events[i].description}</h4>` ;
+  newString += `</div>`;
+};
+printToDom(newString, 'events');
+};
+
+
+const volunteers = () => {
+  let newString = '';
+for (let i = 0; i < elizabethSanger.volunteers.length; i++) {
+  newString += `<div class="volunteer">`;
+  newString += `<h4>Name: ${elizabethSanger.volunteers[i].name} ${','} ` ;
+  newString += `Address: ${elizabethSanger.volunteers[i].address} ${','} ` ;
+  newString += `Email: ${elizabethSanger.volunteers[i].email} ${','}` ;
+  newString += `Phone: ${elizabethSanger.volunteers[i].phone} ${','}` ;
+  newString += `Availability: ${elizabethSanger.volunteers[i].availability} ${','}` ;
+  newString += `Activities: ${ elizabethSanger.volunteers[i].activities}</h4>` ;
+  newString += `</div>`;
+};
+printToDom(newString, 'events');
+};
+
+const biography = () => {
+  let newString = elizabethSanger.biography;
+  printToDom(newString,"biography");
+}
+
+const images = () => {
+  let newString = '';
+for (let i = 0; i < elizabethSanger.volunteers.length; i++) {
+  newString += `<div class="images">`;
+  newString += `<h4>Image: <img src = "${elizabethSanger.images[i].imageUrl} ${','}"height = 100px;>` ;
+  newString += `Description: ${elizabethSanger.images[i].description} ${','}` ;
+  newString += `type: ${elizabethSanger.images[i].type}</h4>` ;
+  newString += `</div>`;
+};
+printToDom(newString, 'events');
+}
+
+function congressionalDistrict () {
+  const congress = elizabethSanger.congressionalDistrict;
+  printToDom(congress,'sonnet');
+  }
+const voterRegistrationStringBuilder = () => {
+  const newString = `<a href="http://${elizabethSanger.voterRegistrationUrl}">Register to vote</a>`;
+  printToDom(newString,'voterRegistration');
+};
+
+
+voterRegistrationStringBuilder();
+congressionalDistrict ();
+donationFormUrl();
+statements();
+volunteers();
+biography();
+images();
+missionStatement();
+eventBuilder();
+
